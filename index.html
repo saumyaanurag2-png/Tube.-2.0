@@ -1,11 +1,71 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Tube 2.0</title>
-  </head>
-  <body style="background:black;color:white;font-family:sans-serif;">
-    <h1>Tube 2.0 is LIVE</h1>
-    <p>If you see this, GitHub Pages is working.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tube 2.0</title>
+
+  <!-- Tailwind CDN (safe) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-neutral-950 text-neutral-100 min-h-screen">
+
+  <!-- Navbar -->
+  <header class="border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-lg font-semibold">Tube</h1>
+      <nav class="hidden md:flex gap-6 text-sm text-neutral-400">
+        <a class="hover:text-white" href="#">Home</a>
+        <a class="hover:text-white" href="#">Explore</a>
+        <a class="hover:text-white" href="#">Library</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-4 py-20">
+    <h2 class="text-4xl md:text-5xl font-bold tracking-tight">
+      Learn without noise.
+    </h2>
+    <p class="mt-4 text-neutral-400 max-w-xl">
+      A calm, Thinktube-inspired space focused on clarity, depth, and ideas.
+    </p>
+    <button class="mt-8 px-6 py-3 rounded-xl bg-white text-black font-medium">
+      Start Watching
+    </button>
+  </section>
+
+  <!-- Content -->
+  <section class="max-w-6xl mx-auto px-4 pb-20">
+    <h3 class="text-xl font-semibold mb-6">Recommended</h3>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="border border-white/10 rounded-2xl p-4">
+        <div class="h-36 bg-neutral-800 rounded-xl mb-4"></div>
+        <h4 class="font-medium">Thinking Clearly</h4>
+        <p class="text-sm text-neutral-400">Philosophy • 30 min</p>
+      </div>
+
+      <div class="border border-white/10 rounded-2xl p-4">
+        <div class="h-36 bg-neutral-800 rounded-xl mb-4"></div>
+        <h4 class="font-medium">Physics Intuition</h4>
+        <p class="text-sm text-neutral-400">Science • 45 min</p>
+      </div>
+
+      <div class="border border-white/10 rounded-2xl p-4">
+        <div class="h-36 bg-neutral-800 rounded-xl mb-4"></div>
+        <h4 class="font-medium">Math & Beauty</h4>
+        <p class="text-sm text-neutral-400">Math • 25 min</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-6 text-center text-sm text-neutral-500">
+    © 2026 Tube 2.0
+  </footer>
+
+</body>
 </html>
+
