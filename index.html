@@ -4,7 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tube 2.0</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Reset & base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* Body background - dark red ambient vibe */
+        body {
+            background: linear-gradient(135deg, #330000, #660000);
+            color: #fff0f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Header */
+        header {
+            padding: 20px;
+            text-align: center;
+            background: rgba(255, 0, 0, 0.2);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+
+        /* Main content */
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff6666;
+        }
+
+        .content p {
+            font-size: 1.2rem;
+            color: #ffc0c0;
+            text-shadow: 0 0 5px #ff0000;
+        }
+
+        /* Footer */
+        footer {
+            padding: 15px;
+            text-align: center;
+            background: rgba(255, 0, 0, 0.1);
+            box-shadow: 0 -0 15px rgba(255, 0, 0, 0.4);
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -23,7 +79,10 @@
         <p>© 2026 Tube 2.0</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Empty for now - add functionality if needed later
+        console.log("Tube 2.0 loaded");
+    </script>
 </body>
 </html>
 
