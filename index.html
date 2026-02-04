@@ -35,6 +35,51 @@
     <a href="watch.html"
    class="inline-block mt-8 px-6 py-3 rounded-xl bg-white text-black font-medium">
   <body>
+  <!-- VIDEO PLAYER -->
+<div style="text-align:center; margin-top:20px;">
+  <iframe
+    id="player"
+    width="90%"
+    height="400"
+    src=""
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<hr>
+
+<!-- VIDEOS -->
+<h2>Videos</h2>
+<button onclick="playVideo('dQw4w9WgXcQ')">Video 1</button>
+<button onclick="playVideo('9bZkp7q19f0')">Video 2</button>
+<button onclick="playVideo('3JZ_D3ELwOQ')">Video 3</button>
+
+<hr>
+
+<!-- PLAYLISTS -->
+<h2>Playlists</h2>
+<button onclick="playPlaylist('PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj')">
+  Playlist 1
+</button>
+
+<button onclick="playPlaylist('PLFgquLnL59amEA43C5dFIt2k3pYw8ZrYx')">
+  Playlist 2
+</button>
+
+<script>
+  function playVideo(videoId) {
+    document.getElementById("player").src =
+      "https://www.youtube.com/embed/" + videoId;
+  }
+
+  function playPlaylist(playlistId) {
+    document.getElementById("player").src =
+      "https://www.youtube.com/embed/videoseries?list=" + playlistId;
+  }
+</script>
+  
 <div id="player"></div>
 
 <script>
