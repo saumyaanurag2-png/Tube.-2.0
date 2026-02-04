@@ -1,136 +1,116 @@
-<!-- rebuild: thinktube-ui-v1 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tube 2.0-Thinkktube UI</title>
+<meta charset="UTF-8">
+<title>Tube 2.0</title>
 
-  <!-- Tailwind CDN (safe) -->
-  <script src="https://cdn.tailwindcss.com"></script>
+<style>
+body {
+  margin: 0;
+  background: #0f0f0f;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  padding: 15px 20px;
+  font-size: 22px;
+  font-weight: bold;
+  background: #181818;
+  border-bottom: 1px solid #333;
+}
+
+.container {
+  display: flex;
+  height: calc(100vh - 60px);
+}
+
+.sidebar {
+  width: 260px;
+  background: #181818;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  color: #aaa;
+}
+
+.sidebar button {
+  width: 100%;
+  background: #222;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.sidebar button:hover {
+  background: #333;
+}
+
+.player {
+  flex: 1;
+  background: black;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+</style>
 </head>
 
-<body class="bg-neutral-950 text-neutral-100 min-h-screen">
+<body>
 
-  <!-- Navbar -->
-  <header class="border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-lg font-semibold">Tube</h1>
-      <nav class="hidden md:flex gap-6 text-sm text-neutral-400">
-        <a class="hover:text-white" href="#">Home</a>
-        <a class="hover:text-white" href="#">Explore</a>
-        <a class="hover:text-white" href="#">Library</a>
-      </nav>
-    </div>
-  </header>
+<header>▶ Tube 2.0</header>
 
-  <!-- Hero -->
-  <section class="max-w-6xl mx-auto px-4 py-20">
-    <h2 class="text-4xl md:text-5xl font-bold tracking-tight">
-      Learn without noise.
-    </h2>
-    <p class="mt-4 text-neutral-400 max-w-xl">
-      A calm, Thinktube-inspired space focused on clarity, depth, and ideas.
-    </p>
-    <a href="watch.html"
-   class="inline-block mt-8 px-6 py-3 rounded-xl bg-white text-black font-medium">
-  <body>
+<div class="container">
+
+  <!-- LEFT PANEL -->
+  <div class="sidebar">
+    <h3>Videos</h3>
+    <button onclick="playVideo('dQw4w9WgXcQ')">Never Gonna Give You Up</button>
+    <button onclick="playVideo('9bZkp7q19f0')">Gangnam Style</button>
+    <button onclick="playVideo('3JZ_D3ELwOQ')">See You Again</button>
+
+    <h3>Playlists</h3>
+    <button onclick="playPlaylist('PLFgquLnL59amEA43C5dFIt2k3pYw8ZrYx')">
+      Popular Music
+    </button>
+
+    <button onclick="playPlaylist('PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj')">
+      Top Hits
+    </button>
+  </div>
+
   <!-- VIDEO PLAYER -->
-<div style="text-align:center; margin-top:20px;">
-  <iframe
-    id="player"
-    width="90%"
-    height="400"
-    src="src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-    frameborder="0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen>
-  </iframe>
+  <div class="player">
+    <iframe
+      id="player"
+      src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>
+
 </div>
 
-<hr>
-
-<!-- VIDEOS -->
-<h2>Videos</h2>
-<button onclick="playVideo('dQw4w9WgXcQ')">Video 1</button>
-<button onclick="playVideo('9bZkp7q19f0')">Video 2</button>
-<button onclick="playVideo('3JZ_D3ELwOQ')">Video 3</button>
-<button onclick="playVideo('abcd1234XYZ')">My Video</button>
-    
-
-<hr>
-
-<!-- PLAYLISTS -->
-<h2>Playlists</h2>
-<button onclick="playPlaylist('PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj')">
-  <button onclick="playVideo('abcd1234XYZ')">My Video</button>
-Playlist 1
-</button>
-
-<button onclick="playPlaylist('PLFgquLnL59amEA43C5dFIt2k3pYw8ZrYx')">
-  Playlist 2
-  </button>
-
 <script>
-  function playVideo(videoId) {
-    document.getElementById("player").src =
-      "https://www.youtube.com/embed/" + videoId;
-  }
+function playVideo(id) {
+  document.getElementById("player").src =
+    "https://www.youtube.com/embed/" + id + "?autoplay=1";
+}
 
-  function playPlaylist(playlistId) {
-    document.getElementById("player").src =
-      "https://www.youtube.com/embed/videoseries?list=" + playlistId;
-  }
+function playPlaylist(id) {
+  document.getElementById("player").src =
+    "https://www.youtube.com/embed/videoseries?list=" + id + "&autoplay=1";
+}
 </script>
-  
-<div id="player"></div>
-
-<script>
-  ...
-</script>
-
-</body>
-    
-</body>
-<a href="watch.html?v=dQw4w9WgXcQ" class="hero-video">
-  <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg">
-  <div class="hero-meta">
-    <h3>Sample Video</h3>
-    <p>Test Channel</p>
-    <span>Start Watching</span>
-  </div>
-</a>   
-
-  <!-- Content -->
-  <section class="max-w-6xl mx-auto px-4 pb-20">
-    <h3 class="text-xl font-semibold mb-6">Recommended</h3>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="border border-white/10 rounded-2xl p-4">
-        <div class="h-36 bg-neutral-800 rounded-xl mb-4"></div>
-        <h4 class="font-medium">Thinking Clearly</h4>
-        <p class="text-sm text-neutral-400">Philosophy • 30 min</p>
-      </div>
-
-      <div class="border border-white/10 rounded-2xl p-4">
-        <div class="h-36 bg-neutral-800 rounded-xl mb-4"></div>
-        <h4 class="font-medium">Physics Intuition</h4>
-        <p class="text-sm text-neutral-400">Science • 45 min</p>
-      </div>
-
-      <div class="border border-white/10 rounded-2xl p-4">
-        <div class="h-36 bg-neutral-800 rounded-xl mb-4"></div>
-        <h4 class="font-medium">Math & Beauty</h4>
-        <p class="text-sm text-neutral-400">Math • 25 min</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="border-t border-white/10 py-6 text-center text-sm text-neutral-500">
-    © 2026 Tube 2.0
-  </footer>
 
 </body>
 </html>
-
