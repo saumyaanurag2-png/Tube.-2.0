@@ -6,99 +6,193 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+:root {
+  --bg: #0e1116;
+  --panel: #161b22;
+  --card: #1f2630;
+  --accent: #ff4d4d;
+  --text: #e6edf3;
+  --muted: #9aa4b2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  background: #0f0f0f;
-  color: white;
-  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #121826, #0b0f14);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
 }
 
+/* App Container */
+.app {
+  width: 92%;
+  max-width: 1100px;
+  height: 88vh;
+  background: var(--panel);
+  border-radius: 18px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+}
+
+/* Sidebar */
 .sidebar {
   width: 260px;
-  background: #181818;
-  padding: 10px;
-  overflow-y: auto;
+  background: linear-gradient(180deg, #161b22, #12161d);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
 }
 
-.sidebar h2 {
+.logo {
+  font-size: 20px;
+  font-weight: 600;
   text-align: center;
+  margin-bottom: 14px;
+  letter-spacing: 0.5px;
 }
 
-.sidebar button {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  background: #ff0000;
+.add-btn {
+  background: var(--accent);
   color: white;
   border: none;
+  padding: 10px;
+  border-radius: 10px;
   cursor: pointer;
-  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.add-btn:hover {
+  opacity: 0.9;
+}
+
+.video-list {
+  overflow-y: auto;
+  flex: 1;
 }
 
 .video-item {
-  background: #222;
-  padding: 8px;
-  margin-bottom: 8px;
+  background: var(--card);
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
   cursor: pointer;
-  border-radius: 5px;
+  font-size: 14px;
+  color: var(--muted);
 }
 
 .video-item:hover {
-  background: #333;
+  background: #2a3342;
+  color: var(--text);
 }
 
+/* Main */
 .main {
   flex: 1;
-  padding: 15px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.player-wrapper {
+  flex: 1;
+  background: black;
+  border-radius: 14px;
+  overflow: hidden;
 }
 
 iframe {
   width: 100%;
-  height: 90%;
+  height: 100%;
   border: none;
-  border-radius: 10px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+  .app {
+    flex-direction: column;
+    height: 94vh;
+  }
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+  }
+  .video-list {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+  }
+  .video-item {
+    white-space: nowrap;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="sidebar">
-  <h2>ThinkTube</h2>
-  <button onclick="addVideo()">➕ Add Video / Playlist</button>
-  <div id="videoList"></div>
-</div>
+<div class="app">
 
-<div class="main">
-  <iframe id="player" 
-    src="https://www.youtube.com/embed/aircAruvnKk" 
-    allowfullscreen>
-  </iframe>
+  <div class="sidebar">
+    <div class="logo">ThinkTube</div>
+    <button class="add-btn" onclick="addVideo()">＋ Add</button>
+    <div class="video-list" id="videoList"></div>
+  </div>
+
+  <div class="main">
+    <div class="player-wrapper">
+      <iframe id="player"
+        src="https://www.youtube.com/embed/aircAruvnKk"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="footer">Distraction-free study mode</div>
+  </div>
+
 </div>
 
 <script>
 function addVideo() {
-  let link = prompt("Paste YouTube video or playlist link:");
+  let link = prompt("Paste YouTube video or playlist link");
   if (!link) return;
 
   let embed = "";
 
   if (link.includes("watch?v=")) {
-    embed = "https://www.youtube.com/embed/" + link.split("watch?v=")[1].split("&")[0];
+    embed = "https://www.youtube.com/embed/" +
+      link.split("watch?v=")[1].split("&")[0];
   } 
   else if (link.includes("playlist?list=")) {
-    embed = "https://www.youtube.com/embed/videoseries?list=" + link.split("list=")[1];
+    embed = "https://www.youtube.com/embed/videoseries?list=" +
+      link.split("list=")[1];
   } 
   else {
     alert("Invalid YouTube link");
     return;
   }
 
-  let item = document.createElement("div");
+  const item = document.createElement("div");
   item.className = "video-item";
-  item.innerText = "▶ Video " + (document.querySelectorAll(".video-item").length + 1);
+  item.textContent = "▶ Study Video " +
+    (document.querySelectorAll(".video-item").length + 1);
+
   item.onclick = () => {
     document.getElementById("player").src = embed;
   };
