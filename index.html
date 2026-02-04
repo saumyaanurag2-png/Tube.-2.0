@@ -1,225 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Stube 2.0</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-:root{
-  --bg:#0b0f14;
-  --panel:#11161d;
-  --card:#161c25;
-  --accent:#4ade80;
-  --text:#e8edf2;
-  --muted:#9aa4b2;
-}
-
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  background:radial-gradient(circle at top,#101826,#070a0f);
-  color:var(--text);
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-}
-
-/* Layout */
-.app{
-  display:flex;
-  min-height:100vh;
-}
-
-/* Sidebar */
-.sidebar{
-  width:72px;
-  background:#05070a;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:14px 0;
-  gap:22px;
-}
-
-.icon{
-  width:40px;
-  height:40px;
-  border-radius:12px;
-  background:#121821;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:var(--accent);
-  font-size:18px;
-}
-
-/* Main */
-.main{
-  flex:1;
-  padding:28px;
-  max-width:1200px;
-}
-
-/* Header */
-.header{
-  margin-bottom:26px;
-}
-
-.header h1{
-  font-size:30px;
-  margin:0;
-}
-
-.header p{
-  color:var(--muted);
-  margin-top:6px;
-}
-
-/* Player */
-.player-wrap{
-  background:black;
-  border-radius:20px;
-  overflow:hidden;
-  height:360px;
-  margin-bottom:22px;
-}
-
-iframe{
-  width:100%;
-  height:100%;
-  border:none;
-}
-
-/* Controls */
-.controls{
-  display:flex;
-  gap:12px;
-  margin-bottom:28px;
-}
-
-button{
-  background:var(--panel);
-  color:var(--text);
-  border:none;
-  padding:10px 16px;
-  border-radius:12px;
-  cursor:pointer;
-}
-
-button:hover{
-  background:#1b2230;
-}
-
-/* Library */
-.section h3{
-  margin-bottom:14px;
-}
-
-.list{
-  display:flex;
-  gap:16px;
-  flex-wrap:wrap;
-}
-
-.item{
-  background:var(--card);
-  border-radius:16px;
-  padding:14px;
-  width:240px;
-  cursor:pointer;
-}
-
-.item p{
-  margin:0;
-  color:var(--muted);
-  font-size:14px;
-}
-
-.footer{
-  margin-top:40px;
-  color:var(--muted);
-  font-size:13px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tube 2.0</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <header>
+        <h1>Tube 2.0</h1>
+    </header>
 
-<div class="app">
+    <main>
+        <div class="content">
+            <h2>Welcome to Tube 2.0</h2>
+            <p>Your red ambient themed media hub!</p>
+            <!-- Add your main content here -->
+        </div>
+    </main>
 
-  <div class="sidebar">
-    <div class="icon">▶</div>
-    <div class="icon">📁</div>
-    <div class="icon">⚙</div>
-  </div>
+    <footer>
+        <p>© 2026 Tube 2.0</p>
+    </footer>
 
-  <div class="main">
-
-    <div class="header">
-      <h1>Stube 2.0</h1>
-      <p>A calm space to watch and think.</p>
-    </div>
-
-    <div class="player-wrap">
-      <iframe id="player"
-        src="https://www.youtube.com/embed/aircAruvnKk"
-        allowfullscreen>
-      </iframe>
-    </div>
-
-    <div class="controls">
-      <button onclick="addVideo()">＋ Add Video / Playlist</button>
-      <button onclick="clearList()">Clear List</button>
-    </div>
-
-    <div class="section">
-      <h3>Your Library</h3>
-      <div class="list" id="videoList"></div>
-    </div>
-
-    <div class="footer">
-      Stube 2.0 · Personal project · No tracking · No noise
-    </div>
-
-  </div>
-
-</div>
-
-<script>
-function addVideo(){
-  const link = prompt("Paste YouTube video or playlist link");
-  if(!link) return;
-
-  let embed = "";
-
-  if(link.includes("watch?v=")){
-    embed = "https://www.youtube.com/embed/" +
-      link.split("watch?v=")[1].split("&")[0];
-  }
-  else if(link.includes("playlist?list=")){
-    embed = "https://www.youtube.com/embed/videoseries?list=" +
-      link.split("list=")[1];
-  }
-  else{
-    alert("Invalid YouTube link");
-    return;
-  }
-
-  const item = document.createElement("div");
-  item.className = "item";
-  item.innerHTML = "<p>▶ Open</p>";
-
-  item.onclick = () => {
-    document.getElementById("player").src = embed;
-  };
-
-  document.getElementById("videoList").appendChild(item);
-}
-
-function clearList(){
-  document.getElementById("videoList").innerHTML = "";
-}
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
+
