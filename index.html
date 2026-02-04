@@ -2,115 +2,97 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Tube 2.0</title>
+<title>ThinkTube</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body {
-  margin: 0;
-  background: #0f0f0f;
-  color: white;
-  font-family: Arial, sans-serif;
+    margin: 0;
+    background: #0f0f0f;
+    color: white;
+    font-family: Arial, sans-serif;
 }
 
 header {
-  padding: 15px 20px;
-  font-size: 22px;
-  font-weight: bold;
-  background: #181818;
-  border-bottom: 1px solid #333;
+    background: #181818;
+    padding: 15px;
+    font-size: 22px;
+    text-align: center;
+    font-weight: bold;
 }
 
-.container {
-  display: flex;
-  height: calc(100vh - 60px);
+.section {
+    padding: 15px;
 }
 
-.sidebar {
-  width: 260px;
-  background: #181818;
-  padding: 15px;
-  overflow-y: auto;
+h2 {
+    margin-bottom: 10px;
 }
 
-.sidebar h3 {
-  margin-top: 0;
-  color: #aaa;
-}
-
-.sidebar button {
-  width: 100%;
-  background: #222;
-  color: white;
-  border: none;
-  padding: 10px;
-  margin-bottom: 8px;
-  cursor: pointer;
-  text-align: left;
-}
-
-.sidebar button:hover {
-  background: #333;
-}
-
-.player {
-  flex: 1;
-  background: black;
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
 }
 
 iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
+    width: 100%;
+    height: 160px;
+    border-radius: 10px;
+    border: none;
 }
 </style>
 </head>
 
 <body>
 
-<header>▶ Tube 2.0</header>
+<header>ThinkTube 📚</header>
 
-<div class="container">
+<div class="section">
+<h2>📌 Study Videos</h2>
 
-  <!-- LEFT PANEL -->
-  <div class="sidebar">
-    <h3>Videos</h3>
-    <button onclick="playVideo('dQw4w9WgXcQ')">Never Gonna Give You Up</button>
-    <button onclick="playVideo('9bZkp7q19f0')">Gangnam Style</button>
-    <button onclick="playVideo('3JZ_D3ELwOQ')">See You Again</button>
+<div class="video-grid">
 
-    <h3>Playlists</h3>
-    <button onclick="playPlaylist('PLFgquLnL59amEA43C5dFIt2k3pYw8ZrYx')">
-      Popular Music
-    </button>
+<!-- VIDEO 1 -->
+<iframe 
+src="https://www.youtube.com/embed/aircAruvnKk" 
+allowfullscreen>
+</iframe>
 
-    <button onclick="playPlaylist('PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj')">
-      Top Hits
-    </button>
-  </div>
+<!-- VIDEO 2 -->
+<iframe 
+src="https://www.youtube.com/embed/kqtD5dpn9C8" 
+allowfullscreen>
+</iframe>
 
-  <!-- VIDEO PLAYER -->
-  <div class="player">
-    <iframe
-      id="player"
-      src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-      allow="autoplay; encrypted-media"
-      allowfullscreen>
-    </iframe>
-  </div>
+<!-- VIDEO 3 -->
+<iframe 
+src="https://www.youtube.com/embed/gyMwXuJrbJQ" 
+allowfullscreen>
+</iframe>
 
 </div>
+</div>
 
-<script>
-function playVideo(id) {
-  document.getElementById("player").src =
-    "https://www.youtube.com/embed/" + id + "?autoplay=1";
-}
+<div class="section">
+<h2>📂 Playlists</h2>
 
-function playPlaylist(id) {
-  document.getElementById("player").src =
-    "https://www.youtube.com/embed/videoseries?list=" + id + "&autoplay=1";
-}
-</script>
+<div class="video-grid">
+
+<!-- PLAYLIST 1 -->
+<iframe 
+src="https://www.youtube.com/embed/videoseries?list=PLUl4u3cNGP63WbdFxL8giv4yhgdMGaZNA"
+allowfullscreen>
+</iframe>
+
+<!-- PLAYLIST 2 -->
+<iframe 
+src="https://www.youtube.com/embed/videoseries?list=PL9ooVrP1hQOFO9k5PZrJxkZpMZ9F8z9hU"
+allowfullscreen>
+</iframe>
+
+</div>
+</div>
 
 </body>
 </html>
