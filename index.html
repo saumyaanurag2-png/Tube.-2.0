@@ -7,92 +7,105 @@
 
 <style>
 body {
-    margin: 0;
-    background: #0f0f0f;
-    color: white;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  background: #0f0f0f;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  height: 100vh;
 }
 
-header {
-    background: #181818;
-    padding: 15px;
-    font-size: 22px;
-    text-align: center;
-    font-weight: bold;
+.sidebar {
+  width: 260px;
+  background: #181818;
+  padding: 10px;
+  overflow-y: auto;
 }
 
-.section {
-    padding: 15px;
+.sidebar h2 {
+  text-align: center;
 }
 
-h2 {
-    margin-bottom: 10px;
+.sidebar button {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  background: #ff0000;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-.video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 15px;
+.video-item {
+  background: #222;
+  padding: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.video-item:hover {
+  background: #333;
+}
+
+.main {
+  flex: 1;
+  padding: 15px;
 }
 
 iframe {
-    width: 100%;
-    height: 160px;
-    border-radius: 10px;
-    border: none;
+  width: 100%;
+  height: 90%;
+  border: none;
+  border-radius: 10px;
 }
 </style>
 </head>
 
 <body>
 
-<header>ThinkTube 📚</header>
-
-<div class="section">
-<h2>📌 Study Videos</h2>
-
-<div class="video-grid">
-
-<!-- VIDEO 1 -->
-<iframe 
-src="https://www.youtube.com/embed/aircAruvnKk" 
-allowfullscreen>
-</iframe>
-
-<!-- VIDEO 2 -->
-<iframe 
-src="https://www.youtube.com/embed/kqtD5dpn9C8" 
-allowfullscreen>
-</iframe>
-
-<!-- VIDEO 3 -->
-<iframe 
-src="https://www.youtube.com/embed/gyMwXuJrbJQ" 
-allowfullscreen>
-</iframe>
-
-</div>
+<div class="sidebar">
+  <h2>ThinkTube</h2>
+  <button onclick="addVideo()">➕ Add Video / Playlist</button>
+  <div id="videoList"></div>
 </div>
 
-<div class="section">
-<h2>📂 Playlists</h2>
-
-<div class="video-grid">
-
-<!-- PLAYLIST 1 -->
-<iframe 
-src="https://www.youtube.com/embed/videoseries?list=PLUl4u3cNGP63WbdFxL8giv4yhgdMGaZNA"
-allowfullscreen>
-</iframe>
-
-<!-- PLAYLIST 2 -->
-<iframe 
-src="https://www.youtube.com/embed/videoseries?list=PL9ooVrP1hQOFO9k5PZrJxkZpMZ9F8z9hU"
-allowfullscreen>
-</iframe>
-
+<div class="main">
+  <iframe id="player" 
+    src="https://www.youtube.com/embed/aircAruvnKk" 
+    allowfullscreen>
+  </iframe>
 </div>
-</div>
+
+<script>
+function addVideo() {
+  let link = prompt("Paste YouTube video or playlist link:");
+  if (!link) return;
+
+  let embed = "";
+
+  if (link.includes("watch?v=")) {
+    embed = "https://www.youtube.com/embed/" + link.split("watch?v=")[1].split("&")[0];
+  } 
+  else if (link.includes("playlist?list=")) {
+    embed = "https://www.youtube.com/embed/videoseries?list=" + link.split("list=")[1];
+  } 
+  else {
+    alert("Invalid YouTube link");
+    return;
+  }
+
+  let item = document.createElement("div");
+  item.className = "video-item";
+  item.innerText = "▶ Video " + (document.querySelectorAll(".video-item").length + 1);
+  item.onclick = () => {
+    document.getElementById("player").src = embed;
+  };
+
+  document.getElementById("videoList").appendChild(item);
+}
+</script>
 
 </body>
 </html>
