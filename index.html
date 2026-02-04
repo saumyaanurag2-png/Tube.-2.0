@@ -1,88 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tube 2.0</title>
-    <style>
-        /* Reset & base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
+<meta charset="UTF-8">
+<title>Stube 2.0</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        /* Body background - dark red ambient vibe */
-        body {
-            background: linear-gradient(135deg, #330000, #660000);
-            color: #fff0f0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+<style>
+:root{
+  --bg:#330000;
+  --panel:#660000;
+  --card:#550000;
+  --accent:#ff4d4d;
+  --text:#ffe5e5;
+  --muted:#ff9999;
+}
 
-        /* Header */
-        header {
-            padding: 20px;
-            text-align: center;
-            background: rgba(255, 0, 0, 0.2);
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
-        }
+*{box-sizing:border-box}
 
-        /* Main content */
-        main {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+body{
+  margin:0;
+  background: radial-gradient(circle at top, #440000, #220000);
+  color:var(--text);
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+}
 
-        .content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff6666;
-        }
+/* Layout */
+.app{
+  display:flex;
+  min-height:100vh;
+  /* Remove sidebar space */
+  flex-direction: column;
+}
 
-        .content p {
-            font-size: 1.2rem;
-            color: #ffc0c0;
-            text-shadow: 0 0 5px #ff0000;
-        }
+/* Main */
+.main{
+  flex:1;
+  padding:28px;
+  max-width:1200px;
+  margin: 0 auto;
+}
 
-        /* Footer */
-        footer {
-            padding: 15px;
-            text-align: center;
-            background: rgba(255, 0, 0, 0.1);
-            box-shadow: 0 -0 15px rgba(255, 0, 0, 0.4);
-            font-size: 0.9rem;
-        }
-    </style>
+/* Header */
+.header{
+  margin-bottom:26px;
+  text-align: center;
+}
+
+.header h1{
+  font-size:30px;
+  margin:0;
+  text-shadow: 0 0 10px var(--accent);
+}
+
+.header p{
+  color:var(--muted);
+  margin-top:6px;
+}
+
+/* Player */
+.player-wrap{
+  background:#220000;
+  border-radius:20px;
+  overflow:hidden;
+  height:360px;
+  margin-bottom:22px;
+  box-shadow: 0 0 20px var(--accent);
+}
+
+iframe{
+  width:100%;
+  height:100%;
+  border:none;
+}
+
+/* Controls */
+.controls{
+  display:flex;
+  gap:12px;
+  margin-bottom:28px;
+  justify-content: center;
+}
+
+button{
+  background:var(--panel);
+  color:var(--text);
+  border:none;
+  padding:10px 16px;
+  border-radius:12px;
+  cursor:pointer;
+  transition: all 0.2s;
+}
+
+button:hover{
+  background:#880000;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* Library */
+.section h3{
+  margin-bottom:14px;
+  text-align: center;
+}
+
+.list{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  justify-content: center;
+}
+
+.item{
+  background:var(--card);
+  border-radius:16px;
+  padding:14px;
+  width:240px;
+  cursor:pointer;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.item:hover{
+  box-shadow: 0 0 15px var(--accent);
+}
+
+.item p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.footer{
+  margin-top:40px;
+  color:var(--muted);
+  font-size:13px;
+  text-align: center;
+}
+</style>
 </head>
+
 <body>
-    <header>
-        <h1>Tube 2.0</h1>
-    </header>
 
-    <main>
-        <div class="content">
-            <h2>Welcome to Tube 2.0</h2>
-            <p>Your red ambient themed media hub!</p>
-            <!-- Add your main content here -->
-        </div>
-    </main>
+<div class="app">
 
-    <footer>
-        <p>© 2026 Tube 2.0</p>
-    </footer>
+  <div class="main">
 
-    <script>
-        // Empty for now - add functionality if needed later
-        console.log("Tube 2.0 loaded");
-    </script>
+    <div class="header">
+      <h1>Stube 2.0</h1>
+      <p>A calm space to watch and think.</p>
+    </div>
+
+    <div class="player-wrap">
+      <iframe id="player"
+        src="https://www.youtube.com/embed/aircAruvnKk"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="controls">
+      <button onclick="addVideo()">＋ Add Video / Playlist</button>
+      <button onclick="clearList()">Clear List</button>
+    </div>
+
+    <div class="section">
+      <h3>Your Library</h3>
+      <div class="list" id="videoList"></div>
+    </div>
+
+    <div class="footer">
+      Stube 2.0 · Personal project · No tracking · No noise
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function addVideo(){
+  const link = prompt("Paste YouTube video or playlist link");
+  if(!link) return;
+
+  let embed = "";
+
+  if(link.includes("watch?v=")){
+    embed = "https://www.youtube.com/embed/" +
+      link.split("watch?v=")[1].split("&")[0];
+  }
+  else if(link.includes("playlist?list=")){
+    embed = "https://www.youtube.com/embed/videoseries?list=" +
+      link.split("list=")[1];
+  }
+  else{
+    alert("Invalid YouTube link");
+    return;
+  }
+
+  const item = document.createElement("div");
+  item.className = "item";
+  item.innerHTML = "<p>▶ Open</p>";
+
+  item.onclick = () => {
+    document.getElementById("player").src = embed;
+  };
+
+  document.getElementById("videoList").appendChild(item);
+}
+
+function clearList(){
+  document.getElementById("videoList").innerHTML = "";
+}
+</script>
+
 </body>
 </html>
-
